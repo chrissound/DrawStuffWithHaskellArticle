@@ -24,3 +24,5 @@ It takes an array (list?) of elements of type Picture and returns a single Pictu
 
 ## {{git message}}
 Ohhhhhh. For some reason the parameter must be a Float (instead of Int).
+
+## {{git message}}

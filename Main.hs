@@ -11,11 +11,11 @@ background = white
 getCircle :: Float -> Picture
 getCircle size = circle size
 
-get5Circles :: [Picture]
-get5Circles = map getCircle [10,20..50]
+getCircles :: Int -> [Picture]
+getCircles count = map getCircle (take count [10,20..])
 
 drawing :: Picture
-drawing = pictures get5Circles
+drawing = pictures (getCircles 5)
 
 main :: IO ()
 main = display window background drawing
