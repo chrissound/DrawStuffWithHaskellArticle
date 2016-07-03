@@ -47,3 +47,5 @@ The above will have x as the value 24 (c+d)+(c*3) = (5 + 4)+(5*3) = 24
 We also need the help of `fromIntegral` to help us convert between numeric types. We're also using an anonymous function with the map.
 
 We're also using `Translate` which is a data constructor, basically a function that constructs a data type, hence the reason it's capitalized (it's a requirement of Haskell syntax).
+
+Oh and we're also using pattern matching with the `PointCoordinate` data type, (to get the x and y values).
