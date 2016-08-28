@@ -3,20 +3,35 @@
 list (,$compiledArticle, $index, $commit) = $argv;
 
 
+$complied = file_get_contents($compiledArticle);
+
 $complied = str_replace(
     "{{git Main.hs}}",
-      "```haskell" . PHP_EOL
+      "**Main.hs**" . PHP_EOL
+    . "```haskell" . PHP_EOL
     . file_get_contents("Main.hs")
     . "```",
-    file_get_contents($compiledArticle)
+    $complied
+);
+
+$complied = str_replace(
+    "{{git img.cabal}}",
+      "**img.cabal**" . PHP_EOL
+    . "```" . PHP_EOL
+    . file_get_contents("img.cabal")
+    . "```",
+    $complied
 );
 
 if (strpos($complied, "{img}}") !== false) {
-    $imgPath = "images/$commit-$index.png";
+    $imgPath = "compile/images/$commit-$index.png";
+    $compiledImgPath = "images/$commit-$index.png";
+
     exec(sprintf('./screenshot.sh %s', $imgPath));
+
     $complied = str_replace(
         "{{img}}",
-        "![]($imgPath)",
+        "![]($compiledImgPath)",
         $complied
     );
 }
